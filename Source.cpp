@@ -24,11 +24,7 @@ LRESULT CALLBACK LowLevelKeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
 	if (nCode >= 0 && nCode == HC_ACTION)
 	{
 		KBDLLHOOKSTRUCT* p = reinterpret_cast<KBDLLHOOKSTRUCT*>(lParam);
-		if (GetActiveWindow() == hWnd && (wParam == WM_KEYDOWN || wParam == WM_KEYUP) &&
-			(
-				p->vkCode == VK_LWIN || p->vkCode == VK_RWIN
-			)
-			)
+		if (GetActiveWindow() == hWnd && (wParam == WM_KEYDOWN || wParam == WM_KEYUP) && (p->vkCode == VK_LWIN || p->vkCode == VK_RWIN))
 		{
 			return 1;
 		}
